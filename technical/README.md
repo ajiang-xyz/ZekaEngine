@@ -2,6 +2,8 @@
 
 A non-comprehensive assortment of technical explanations and visualizations. More accessible readings are in the making.
 
+Brief, atomic explanation of the Lagrange-DFA offline verification scheme at [LDOV.pdf](/technical/LDOV.pdf).
+
 ## Flowchart
 ```mermaid
 flowchart TD
