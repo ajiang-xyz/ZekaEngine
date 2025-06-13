@@ -30,8 +30,9 @@ flowchart TD
     dfa_a --> halting_state
     ident_val --> halting_state
 
-    vuln_text_ptr1 -->|ciphertext| AES_CTR
-    halting_state -->|key| AES_CTR
+    vuln_text_ptr1 -->|deref in L1| ciphertext
+    ciphertext --> AES_CTR
+    halting_state -->|use as key| AES_CTR
 
     AES_CTR -->|if successful| output
     output --> done
