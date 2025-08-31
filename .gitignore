@@ -1,0 +1,10 @@
+.vs
+bin
+obj
+KmdfZekaEngine
+.venv
+*/target
+callgrind*
+**/*/report.html
+**/*/zeka.dat
+**/*/config.yaml

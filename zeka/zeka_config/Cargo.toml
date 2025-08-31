@@ -1,0 +1,25 @@
+[package]
+name = "zeka_config"
+publish = false
+version = "0.1.33"
+edition = "2024"
+authors = ["Alex Jiang <alex@ajiang.xyz>"]
+
+[dependencies]
+aes-gcm = "0.10.3"
+ariadne = "0.5.1"
+ciborium = "0.2.2"
+clap = { version = "4.5.41", features = ["derive"] }
+gmp-mpfr-sys = { version = "1.6.5", default-features = false, features = ["force-cross"] }
+hashlink = "0.10.0"
+hex = "0.4.3"
+regex = "1.11.1"
+regex-automata = "0.4.9"
+rug = { version = "1.27.0", default-features = false, features = ["integer", "rand", "std"] }
+saphyr = "0.0.6"
+saphyr-parser = "0.0.6"
+serde = { version = "1.0.219", features = ["derive"] }
+sha2 = "0.10.9"
+structopt = "0.3.26"
+toml = "0.8.23"
+zeka_crypto = { version = "0.1.33", path = "../zeka_crypto" }

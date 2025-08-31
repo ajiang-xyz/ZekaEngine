@@ -1,0 +1,11 @@
+[workspace]
+resolver = "3"
+members = [
+    "zeka_engine",
+    "zeka_crypto",
+    "zeka_config"
+]
+
+[workspace.package]
+name = "zeka"
+version = "0.1.2"

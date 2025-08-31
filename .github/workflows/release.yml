@@ -1,0 +1,72 @@
+on:
+  push:
+    tags:
+      - 'v*'
+jobs:
+  release-linux:
+    name: Release Linux
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Build
+        working-directory: zeka
+        run: cargo build --workspace --release
+        env:
+          RUSTFLAGS: ""
+
+      - name: Zip
+        run: |
+          cd zeka/target/release
+          zip ../../../zeka-${{ github.ref_name }}-linux.zip \
+            zeka_engine \
+            zeka_crypto \
+            zeka_config
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          files: |
+            zeka-${{ github.ref_name }}-linux.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  release-windows:
+    name: Release Windows
+    runs-on: windows-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup
+        uses: actions-rust-lang/setup-rust-toolchain@v1
+
+      - name: Build
+        working-directory: zeka
+        run: C:\msys64\msys2_shell.cmd -defterm -no-start -mingw64 -here -c "./release.sh"
+        env:
+          RUSTFLAGS: ""
+
+      - name: Zip
+        run: |
+          powershell Compress-Archive -Path `
+            zeka/target/x86_64-pc-windows-gnu/release/zeka_engine.exe, `
+            zeka/target/x86_64-pc-windows-gnu/release/zeka_crypto.exe, `
+            zeka/target/x86_64-pc-windows-gnu/release/zeka_config.exe `
+            -DestinationPath zeka-${{ github.ref_name }}-windows.zip
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          files: |
+            zeka-${{ github.ref_name }}-windows.zip
+          token: ${{ secrets.GITHUB_TOKEN }}
