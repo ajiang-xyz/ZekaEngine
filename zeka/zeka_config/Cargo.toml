@@ -1,7 +1,7 @@
 [package]
 name = "zeka_config"
 publish = false
-version = "0.1.33"
+version = "1.0.0-alpha"
 edition = "2024"
 authors = ["Alex Jiang <alex@ajiang.xyz>"]
 
@@ -22,4 +22,4 @@ serde = { version = "1.0.219", features = ["derive"] }
 sha2 = "0.10.9"
 structopt = "0.3.26"
 toml = "0.8.23"
-zeka_crypto = { version = "0.1.33", path = "../zeka_crypto" }
+zeka_crypto = { version = "1.0.0-alpha", path = "../zeka_crypto" }

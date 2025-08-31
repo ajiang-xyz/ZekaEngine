@@ -2170,7 +2170,7 @@ dependencies = [
 
 [[package]]
 name = "zeka_config"
-version = "0.1.33"
+version = "1.0.0-alpha"
 dependencies = [
  "aes-gcm",
  "ariadne",
@@ -2193,7 +2193,7 @@ dependencies = [
 
 [[package]]
 name = "zeka_crypto"
-version = "0.1.33"
+version = "1.0.0-alpha"
 dependencies = [
  "gmp-mpfr-sys",
  "hex",
@@ -2205,7 +2205,7 @@ dependencies = [
 
 [[package]]
 name = "zeka_engine"
-version = "0.1.33"
+version = "1.0.0-alpha"
 dependencies = [
  "aes-gcm",
  "chrono",
